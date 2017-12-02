@@ -1,8 +1,7 @@
 #card-body {
-    /* font: 17px/1.5em 'font-main'; */
-    font: 17px/1.5em 'Arial', 'Helvetica', 'sans-serif';
+    font: 17px/1.5em 'Arial', 'Helvetica', sans-serif;
     margin-top: 60px;
-    margin-bottom: 50px;
+    margin-bottom: 60px;
 }
 
 .content {

@@ -103,3 +103,4 @@ ENV/
 # my ignorance
 anki/
 aqt/
+.vscode/

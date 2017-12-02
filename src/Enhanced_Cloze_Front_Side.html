@@ -135,7 +135,9 @@
         });
 
         // SCROLL TO FIRST CLOZE
-        scrollToCloze($('.genuine-cloze').first().get(0));
+        if (genuineClozeTotalNumber) {
+            scrollToCloze($('.genuine-cloze').first().get(0));
+        }
 
         // SETUP KEY BINDING
         $(document).bind('keyup', 'i', function () {
