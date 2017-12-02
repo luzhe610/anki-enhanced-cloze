@@ -1,0 +1,231 @@
+<div id="card-body">
+    <div id="main-section" class="content">
+        <!-- Separation line -->
+        {{cloze:Cloze99}}
+        <!-- Separation line -->
+        {{cloze:Cloze1}}
+        <!-- Separation line -->
+        {{cloze:Cloze2}}
+        <!-- Separation line -->
+        {{cloze:Cloze3}}
+        <!-- Separation line -->
+        {{cloze:Cloze4}}
+        <!-- Separation line -->
+        {{cloze:Cloze5}}
+        <!-- Separation line -->
+        {{cloze:Cloze6}}
+        <!-- Separation line -->
+        {{cloze:Cloze7}}
+        <!-- Separation line -->
+        {{cloze:Cloze8}}
+        <!-- Separation line -->
+        {{cloze:Cloze9}}
+        <!-- Separation line -->
+        {{cloze:Cloze10}}
+        <!-- Separation line -->
+        {{cloze:Cloze11}}
+        <!-- Separation line -->
+        {{cloze:Cloze12}}
+        <!-- Separation line -->
+        {{cloze:Cloze13}}
+        <!-- Separation line -->
+        {{cloze:Cloze14}}
+        <!-- Separation line -->
+        {{cloze:Cloze15}}
+        <!-- Separation line -->
+        {{cloze:Cloze16}}
+        <!-- Separation line -->
+        {{cloze:Cloze17}}
+        <!-- Separation line -->
+        {{cloze:Cloze18}}
+        <!-- Separation line -->
+        {{cloze:Cloze19}}
+        <!-- Separation line -->
+        {{cloze:Cloze20}}
+    </div>
+    <br>
+
+    <!-- Separation line -->
+    {{#Note}}
+    <div id="note-section">
+        <div id="note-header" class="header header-red" onclick="showNextElement(this)">
+            Note
+        </div>
+        <div id="note" class="content" style="display:none">
+            {{Note}}
+        </div>
+    </div>
+    <br> {{/Note}}
+
+    <div id="info-section">
+        <div id="info-header" class="header header-blue" onclick="showNextElement(this)">
+            Information
+        </div>
+
+        <div id="info" class="content" style="display:none">
+            <div>
+                Deck: {{Deck}}
+            </div>
+
+            <!-- Separation line -->
+            {{#Tags}}
+            <div id="tags">
+                Tags: {{Tags}}
+            </div>
+            {{/Tags}}
+        </div>
+    </div>
+    <br>
+
+    <!-- Separation line -->
+    {{#Source}}
+    <div id="source-section">
+        <div id="source-header" class="header header-green" onclick="showNextElement(this)">
+            Source
+        </div>
+        <div id="source" class="content" style="display:none">
+            {{Source}}
+        </div>
+    </div>
+    <br> {{/Source}}
+
+    <!-- Separation line -->
+    {{#Extra}}
+    <div id="extra-section">
+        <div id="extra-header" class="header header-yellow" onclick="showNextElement(this)">
+            Extra
+        </div>
+        <div id="extra" class="content" style="display:none">
+            {{Extra}}
+        </div>
+    </div>
+    <br> {{/Extra}}
+
+    <div id="functional-elements">
+        <div id="show-one-cloze-left"></div>
+        <div id="show-one-cloze-right"></div>
+        <div id="no-more-cloze"></div>
+        <div id="show-all-pseudo-clozes"></div>
+        <div style="display:none">
+            {{type:In-use Clozes}}
+        </div>
+    </div>
+</div>
+
+<script src="_jquery-3.2.1.min.js"></script>
+<script src="_jquery.hotkeys.js"></script>
+<script src="_jquery.visible.min.js"></script>
+
+<script>
+    var indexOfGenuineClozeToShow = 0;
+    var genuineClozeTotalNumber = $('.genuine-cloze').length;
+
+    $(function () {
+        // INITIALIZE CLOZES
+        //      genuine clozes refer to those belong to current card and need to be answered, e.g. {{c2::abc}} on card2 
+        //      pseudo clozes refer to the opposite, e.g. {{c1::abc}} and {{c3::abc}} on card2 
+        $('.genuine-cloze, .pseudo-cloze').each(function (index, elem) {
+            toggleCloze(elem, 'hint')
+        });
+
+        // SHORTEN TAGS
+        //      leaving only the last part if hierarchical tags are used, i.e. tag1::tag2::tag3 -> tag3
+        $('#tags').each(function (index, elem) {
+            $(elem).text($(elem).text().replace(/[^:\s]+::/g, ''));
+        });
+
+        // SCROLL TO FIRST CLOZE
+        scrollToCloze($('.genuine-cloze').first().get(0));
+
+        // SETUP KEY BINDING
+        $(document).bind('keyup', 'i', function () {
+            showOneCloze();
+        })
+
+        $(document).bind('keyup', ',', function () {
+            showAllPseudoClozes();
+        })
+
+        // SETUP CLOZE CLICK EVENT
+        $('.genuine-cloze, .pseudo-cloze').click(function () {
+            toggleCloze(this, 'toggle');
+        });
+
+        $('#show-one-cloze-left, #show-one-cloze-right').click(function () {
+            showOneCloze();
+        });
+
+        $('#show-all-pseudo-clozes').click(function () {
+            showAllPseudoClozes();
+        })
+
+    });
+
+    function scrollToCloze(elem) {
+        $('html, body').animate({
+            scrollTop: $(elem).offset().top - 60
+        }, 500);
+    }
+
+    function showOneCloze() {
+        if (indexOfGenuineClozeToShow >= genuineClozeTotalNumber) {
+            $('#no-more-cloze').animate({
+                display: "toggle",
+            }, 500);
+        } else {
+            $('.genuine-cloze[index=' + indexOfGenuineClozeToShow + ']').each(function (index, elem) {
+                if ($(elem).parents('#note:hidden').length) {
+                    $("#note").show(0);
+                } else {
+                    toggleCloze(elem, 'answer');
+                    if (!$(elem).visible()) {
+                        scrollToCloze(elem);
+                    }
+                    $(elem).hide(0);
+                    $(elem).fadeIn(500);
+                    indexOfGenuineClozeToShow++;
+                }
+            })
+        }
+    }
+
+    function showAllPseudoClozes() {
+        $('.pseudo-cloze').each(function (index, elem) {
+            toggleCloze(elem, 'answer');
+        })
+    }
+
+    function toggleCloze(elem, displayOption) {
+        var answer = '',
+            hint = '';
+        var index = $(elem).attr('index');
+        if ($(elem).hasClass('genuine-cloze')) {
+            answer = $('#genuine-cloze-answer-' + index).html();
+            hint = $('#genuine-cloze-hint-' + index).html();
+        } else {
+            answer = $('#pseudo-cloze-answer-' + index).html();
+            hint = $('#pseudo-cloze-hint-' + index).html();
+        }
+        hint = '&nbsp;&nbsp;[&nbsp;&nbsp;' + hint + '&nbsp;&nbsp;]&nbsp;&nbsp;';
+
+        if (displayOption == 'answer') {
+            $(elem).attr('show-state', 'answer');
+            $(elem).html(answer);
+        } else if (displayOption == 'hint') {
+            $(elem).attr('show-state', 'hint');
+            $(elem).html(hint);
+        } else if (displayOption == 'toggle') {
+            if ($(elem).attr('show-state') == 'hint') {
+                $(elem).attr('show-state', 'answer');
+                $(elem).html(answer);
+            } else {
+                $(elem).attr('show-state', 'hint');
+                $(elem).html(hint);
+            };
+        };
+    }
+
+    function showNextElement(elem) {
+        $(elem).next().show(0);
+    };
+</script>
