@@ -177,13 +177,17 @@
                 if ($(elem).parents('#note:hidden').length) {
                     $("#note").show(0);
                 } else {
-                    toggleCloze(elem, 'answer');
                     if (!$(elem).visible()) {
                         scrollToCloze(elem);
+                    } else {
+                        toggleCloze(elem, 'answer');
+                        if (!$(elem).visible()) {
+                            scrollToCloze(elem);
+                        }
+                        $(elem).hide(0);
+                        $(elem).fadeIn(500);
+                        indexOfGenuineClozeToShow++;
                     }
-                    $(elem).hide(0);
-                    $(elem).fadeIn(500);
-                    indexOfGenuineClozeToShow++;
                 }
             })
         }
