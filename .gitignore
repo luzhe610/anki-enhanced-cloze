@@ -104,3 +104,11 @@ ENV/
 anki/
 aqt/
 .vscode/
+*~
+/_Autolinker.min.js
+/__init__.py
+/_jquery-3.2.1.min.js
+/_jquery.hotkeys.js
+/_jquery.visible.min.js
+/model.py
+/src/ec.zip

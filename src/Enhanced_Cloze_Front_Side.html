@@ -1,5 +1,5 @@
-<div id="card-body">
-    <div id="main-section" class="content">
+"<div id=\"card-body\">
+    <div id=\"main-section\" class=\"content\">
         <!-- Separation line -->
         {{cloze:Cloze1}}
         <!-- Separation line -->
@@ -45,29 +45,29 @@
 
     <!-- Separation line -->
     {{#Note}}
-    <div id="note-section">
-        <div id="note-header" class="header header-red" onclick="showNextElement(this)">
+    <div id=\"note-section\">
+        <div id=\"note-header\" class=\"header header-red\" onclick=\"showNextElement(this)\">
             Note
         </div>
-        <div id="note" class="content" style="display:none">
+        <div id=\"note\" class=\"content\" style=\"display:none\">
             {{Note}}
         </div>
     </div>
     <br> {{/Note}}
 
-    <div id="info-section">
-        <div id="info-header" class="header header-blue" onclick="showNextElement(this)">
+    <div id=\"info-section\">
+        <div id=\"info-header\" class=\"header header-blue\" onclick=\"showNextElement(this)\">
             Information
         </div>
 
-        <div id="info" class="content" style="display:none">
+        <div id=\"info\" class=\"content\" style=\"display:none\">
             <div>
                 Deck: {{Deck}}
             </div>
 
             <!-- Separation line -->
             {{#Tags}}
-            <div id="tags">
+            <div id=\"tags\">
                 Tags: {{Tags}}
             </div>
             {{/Tags}}
@@ -77,11 +77,11 @@
 
     <!-- Separation line -->
     {{#Source}}
-    <div id="source-section">
-        <div id="source-header" class="header header-green" onclick="showNextElement(this)">
+    <div id=\"source-section\">
+        <div id=\"source-header\" class=\"header header-green\" onclick=\"showNextElement(this)\">
             Source
         </div>
-        <div id="source" class="content" style="display:none">
+        <div id=\"source\" class=\"content\" style=\"display:none\">
             {{Source}}
         </div>
     </div>
@@ -89,35 +89,34 @@
 
     <!-- Separation line -->
     {{#Extra}}
-    <div id="extra-section">
-        <div id="extra-header" class="header header-yellow" onclick="showNextElement(this)">
+    <div id=\"extra-section\">
+        <div id=\"extra-header\" class=\"header header-yellow\" onclick=\"showNextElement(this)\">
             Extra
         </div>
-        <div id="extra" class="content" style="display:none">
+        <div id=\"extra\" class=\"content\" style=\"display:none\">
             {{Extra}}
         </div>
     </div>
     <br> {{/Extra}}
 
-    <div id="functional-elements">
-        <div id="show-one-cloze-left"></div>
-        <div id="show-one-cloze-right"></div>
-        <div id="no-more-cloze"></div>
-        <div id="show-all-pseudo-clozes"></div>
-        <div style="display:none">
+    <div id=\"functional-elements\">
+        <div id=\"show-one-cloze-left\"></div>
+        <div id=\"show-one-cloze-right\"></div>
+        <div id=\"no-more-cloze\"></div>
+        <div id=\"show-all-pseudo-clozes\"></div>
+        <div style=\"display:none\">
             {{type:In-use Clozes}}
         </div>
     </div>
 </div>
 
-<script src="_jquery-3.2.1.min.js"></script>
-<script src="_jquery.hotkeys.js"></script>
-<script src="_jquery.visible.min.js"></script>
+<script src=\"_jquery-3.2.1.min.js\"></script>
+<script src=\"_jquery.hotkeys.js\"></script>
+<script src=\"_jquery.visible.min.js\"></script>
 
 <script>
     var indexOfGenuineClozeToShow = 0;
     var genuineClozeTotalNumber = $('.genuine-cloze').length;
-
     $(function () {
         // INITIALIZE CLOZES
         //      genuine clozes refer to those belong to current card and need to be answered, e.g. {{c2::abc}} on card2 
@@ -129,7 +128,7 @@
         // SHORTEN TAGS
         //      leaving only the last part if hierarchical tags are used, i.e. tag1::tag2::tag3 -> tag3
         // $('#tags').each(function (index, elem) {
-        //     $(elem).text($(elem).text().replace(/[^:\s]+::/g, ''));
+        //     $(elem).text($(elem).text().replace(/[^:\\s]+::/g, ''));
         // });
 
         // SCROLL TO FIRST CLOZE
@@ -137,13 +136,13 @@
             scrollToCloze($('.genuine-cloze').first().get(0));
         }
 
-        // SETUP KEY BINDING
-        $(document).bind('keyup', 'i', function () {
-            showOneCloze();
-        })
-
-        $(document).bind('keyup', ',', function () {
-            showAllPseudoClozes();
+        $(document).keyup(function (event) {
+            if (event.which == 73 || event.which == 105){//i
+                showOneCloze();
+            }                
+            if (event.which == 188){ //,
+                showAllPseudoClozes();
+            }
         })
 
         // SETUP CLOZE CLICK EVENT
@@ -168,21 +167,33 @@
     }
 
     function showOneCloze() {
+        //alert(\"indexOfGenuineClozeToShow is \"+indexOfGenuineClozeToShow+\" while genuineClozeTotalNumber is \"+genuineClozeTotalNumber );
         if (indexOfGenuineClozeToShow >= genuineClozeTotalNumber) {
             $('#no-more-cloze').animate({
-                display: "toggle",
+                display: \"toggle\",
             }, 500);
         } else {
+            //alert(\"Thus there remains genuine cloze\");
             $('.genuine-cloze[index=' + indexOfGenuineClozeToShow + ']').each(function (index, elem) {
-                if ($(elem).parents('#note:hidden').length) {
-                    $("#note").show(0);
+                //alert(\"We loop over index\"+index);
+                len = $(elem).parents('#note:hidden').length
+                //alert(\"$(elem).parents('#note:hidden').length is \"+len);
+                if (len) {
+                    //alert(\"Thus show\");
+                    $(\"#note\").show(0);
                 } else {
-                    if (!$(elem).visible()) {
+                    //alert(\"Thus don't show\");
+                    if (!$(elem).is(\":visible\")) {
+                        //alert(\"Elem is not visible\");
                         scrollToCloze(elem);
                     } else {
+                        //alert(\"Elem is visible\");
                         toggleCloze(elem, 'answer');
-                        if (!$(elem).visible()) {
+                        if (!$(elem).is(\":visible\")) {
+                            //alert(\"Elem is not visible (second time)\");
                             scrollToCloze(elem);
+                        } else {
+                            //alert(\"Elem is visible (second time)\");
                         }
                         $(elem).hide(0);
                         $(elem).fadeIn(500);
@@ -191,6 +202,7 @@
                 }
             })
         }
+        //alert(\"\");
     }
 
     function showAllPseudoClozes() {
@@ -233,3 +245,4 @@
         $(elem).next().show(0);
     };
 </script>
+
