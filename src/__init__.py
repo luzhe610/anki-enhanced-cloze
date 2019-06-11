@@ -197,15 +197,15 @@ def setup_menu(self):
         lambda _, b=browser: update_all_enhanced_clozes_in_browser(b))
 
 
-    
-_oldSaveNow = Editor.saveNow 
-def on_save_now(self, *args, **kwargs):
+
+_oldSaveNow = Editor.saveNow
+def on_save_now(self, callback, keepFocus=False):
     editor = self
     editor.web.eval("saveField('key');")
     note = editor.note
     tooltip('save now')
     if not note or not check_model(note.model()):
-        return _oldSaveNow(self, *args, **kwargs)
+        return _oldSaveNow(self, callback, keepFocus=False)
     self.saveTags()
 
     generate_enhanced_cloze(note)
@@ -213,8 +213,14 @@ def on_save_now(self, *args, **kwargs):
     editor.loadNote()
     editor.web.setFocus()
     editor.web.eval(f"focusField({editor.currentField});")
-    ret = _oldSaveNow(self, *args, **kwargs)
+    ret = _oldSaveNow(self, callback, keepFocus=False)
     return ret
+
+Editor.saveNow = on_save_now
+
+def onCloze(self):
+    _oldSaveNow(self, self._onCloze, keepFocus = True)
+Editor.onCloze = onCloze
 
 
 # AddCards.addCards = wrap(AddCards.addCards, on_add_cards, "around")
@@ -223,7 +229,7 @@ def on_save_now(self, *args, **kwargs):
 
 
 
-Editor.saveNow = on_save_now
+
 
 addHook("browser.setupMenus", setup_menu)
 
@@ -237,5 +243,5 @@ def addModel():
         file = os.path.join(mw.addonManager.addonsFolder(__name__), file)
         print(f"File is {file}")
         copy(file,mw.col.media.dir())
-    
+
 addHook("profileLoaded", addModel)
