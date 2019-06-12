@@ -203,7 +203,7 @@ def on_save_now(self, callback, keepFocus=False):
     editor = self
     editor.web.eval("saveField('key');")
     note = editor.note
-    tooltip('save now')
+    #tooltip('save now')
     if not note or not check_model(note.model()):
         return _oldSaveNow(self, callback, keepFocus=False)
     self.saveTags()
@@ -221,7 +221,7 @@ Editor.saveNow = on_save_now
 def onCloze(self):
     _oldSaveNow(self, self._onCloze, keepFocus = True)
 Editor.onCloze = onCloze
-
+Editor._links["cloze"] = onCloze
 
 # AddCards.addCards = wrap(AddCards.addCards, on_add_cards, "around")
 
