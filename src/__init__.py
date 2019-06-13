@@ -235,7 +235,7 @@ addHook("browser.setupMenus", setup_menu)
 
 def addModel():
     if exists_model():
-        print("Model exists")
+        #print("Model exists")
         return
     mw.col.models.add(enhancedModel)
     jsToCopy = ["_Autolinker.min.js", "_jquery-3.2.1.min.js", "_jquery.hotkeys.js", "_jquery.visible.min.js"]
