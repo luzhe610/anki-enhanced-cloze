@@ -200,9 +200,10 @@ def setup_menu(self):
     
 _oldSaveNow = Editor.saveNow 
 def on_save_now(self, *args, **kwargs):
-    editor = self
-    editor.web.eval("saveField('key');")
-    note = editor.note
+    if self.web is None: # This occur if the window is already closing, but closing has not yet ended.
+        return 
+    self.web.eval("saveField('key');")
+    note = self.note
     tooltip('save now')
     if not note or not check_model(note.model()):
         return _oldSaveNow(self, *args, **kwargs)
@@ -210,9 +211,9 @@ def on_save_now(self, *args, **kwargs):
 
     generate_enhanced_cloze(note)
 
-    editor.loadNote()
-    editor.web.setFocus()
-    editor.web.eval(f"focusField({editor.currentField});")
+    self.loadNote()
+    self.web.setFocus()
+    self.web.eval(f"focusField({self.currentField});")
     ret = _oldSaveNow(self, *args, **kwargs)
     return ret
 

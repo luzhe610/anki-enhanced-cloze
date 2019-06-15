@@ -1,2 +1,0 @@
-rm ec.zip
-zip ec.zip *.py *js model.py README.md zipping
