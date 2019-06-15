@@ -1,15 +1,468 @@
 enhancedModel = {
     "vers": [],
- "name": "Enhanced Cloze 2.1", 
- "tags": [],
- "did": 1511491712850,
- "usn": -1,
- "flds": [{"name": "# Content", "media": [], "sticky": False, "rtl": False, "ord": 0, "font": "Arial", "size": 17}, {"name": "Note", "media": [], "sticky": False, "rtl": False, "ord": 1, "font": "Arial", "size": 17}, {"name": "Source", "media": [], "sticky": False, "rtl": False, "ord": 2, "font": "Arial", "size": 17}, {"name": "Extrya", "media": [], "sticky": False, "rtl": False, "ord": 3, "font": "Arial", "size": 17}, {"name": "In-use Clozes", "media": [], "sticky": False, "rtl": False, "ord": 4, "font": "Arial", "size": 16}, {"name": "Cloze99", "media": [], "sticky": False, "rtl": False, "ord": 5, "font": "Arial", "size": 16}, {"name": "Cloze1", "media": [], "sticky": False, "rtl": False, "ord": 6, "font": "Arial", "size": 16}, {"name": "Cloze2", "media": [], "sticky": False, "rtl": False, "ord": 7, "font": "Arial", "size": 16}, {"name": "Cloze3", "media": [], "sticky": False, "rtl": False, "ord": 8, "font": "Arial", "size": 16}, {"name": "Cloze4", "media": [], "sticky": False, "rtl": False, "ord": 9, "font": "\u65b9\u6b63\u5170\u4ead\u9ed1\u7b80\u4f53", "size": 16}, {"name": "Cloze5", "media": [], "sticky": False, "rtl": False, "ord": 10, "font": "Arial", "size": 16}, {"name": "Cloze6", "media": [], "sticky": False, "rtl": False, "ord": 11, "font": "Arial", "size": 16}, {"name": "Cloze7", "media": [], "sticky": False, "rtl": False, "ord": 12, "font": "Arial", "size": 16}, {"name": "Cloze8", "media": [], "sticky": False, "rtl": False, "ord": 13, "font": "Arial", "size": 16}, {"name": "Cloze9", "media": [], "sticky": False, "rtl": False, "ord": 14, "font": "Arial", "size": 16}, {"name": "Cloze10", "media": [], "sticky": False, "rtl": False, "ord": 15, "font": "Arial", "size": 16}, {"name": "Cloze11", "media": [], "sticky": False, "rtl": False, "ord": 16, "font": "Arial", "size": 16}, {"name": "Cloze12", "media": [], "sticky": False, "rtl": False, "ord": 17, "font": "Arial", "size": 16}, {"name": "Cloze13", "media": [], "sticky": False, "rtl": False, "ord": 18, "font": "Arial", "size": 16}, {"name": "Cloze14", "media": [], "sticky": False, "rtl": False, "ord": 19, "font": "Arial", "size": 16}, {"name": "Cloze15", "media": [], "sticky": False, "rtl": False, "ord": 20, "font": "Arial", "size": 16}, {"name": "Cloze16", "media": [], "sticky": False, "rtl": False, "ord": 21, "font": "Arial", "size": 16}, {"name": "Cloze17", "media": [], "sticky": False, "rtl": False, "ord": 22, "font": "Arial", "size": 16}, {"name": "Cloze18", "media": [], "sticky": False, "rtl": False, "ord": 23, "font": "Arial", "size": 16}, {"name": "Cloze19", "media": [], "sticky": False, "rtl": False, "ord": 24, "font": "Arial", "size": 16}, {"name": "Cloze20", "media": [], "sticky": False, "rtl": False, "ord": 25, "font": "Arial", "size": 16}],
- "sortf": 0,
- "tmpls": [{"name": "Cloze", "qfmt": "<div id=\"card-body\">\n    <div id=\"main-section\" class=\"content\">\n        <!-- Separation line -->\n        {{cloze:Cloze1}}\n        <!-- Separation line -->\n        {{cloze:Cloze2}}\n        <!-- Separation line -->\n        {{cloze:Cloze3}}\n        <!-- Separation line -->\n        {{cloze:Cloze4}}\n        <!-- Separation line -->\n        {{cloze:Cloze5}}\n        <!-- Separation line -->\n        {{cloze:Cloze6}}\n        <!-- Separation line -->\n        {{cloze:Cloze7}}\n        <!-- Separation line -->\n        {{cloze:Cloze8}}\n        <!-- Separation line -->\n        {{cloze:Cloze9}}\n        <!-- Separation line -->\n        {{cloze:Cloze10}}\n        <!-- Separation line -->\n        {{cloze:Cloze11}}\n        <!-- Separation line -->\n        {{cloze:Cloze12}}\n        <!-- Separation line -->\n        {{cloze:Cloze13}}\n        <!-- Separation line -->\n        {{cloze:Cloze14}}\n        <!-- Separation line -->\n        {{cloze:Cloze15}}\n        <!-- Separation line -->\n        {{cloze:Cloze16}}\n        <!-- Separation line -->\n        {{cloze:Cloze17}}\n        <!-- Separation line -->\n        {{cloze:Cloze18}}\n        <!-- Separation line -->\n        {{cloze:Cloze19}}\n        <!-- Separation line -->\n        {{cloze:Cloze20}}\n    </div>\n    <br>\n\n    <!-- Separation line -->\n    {{#Note}}\n    <div id=\"note-section\">\n        <div id=\"note-header\" class=\"header header-red\" onclick=\"showNextElement(this)\">\n            Note\n        </div>\n        <div id=\"note\" class=\"content\" style=\"display:none\">\n            {{Note}}\n        </div>\n    </div>\n    <br> {{/Note}}\n\n    <div id=\"info-section\">\n        <div id=\"info-header\" class=\"header header-blue\" onclick=\"showNextElement(this)\">\n            Information\n        </div>\n\n        <div id=\"info\" class=\"content\" style=\"display:none\">\n            <div>\n                Deck: {{Deck}}\n            </div>\n\n            <!-- Separation line -->\n            {{#Tags}}\n            <div id=\"tags\">\n                Tags: {{Tags}}\n            </div>\n            {{/Tags}}\n        </div>\n    </div>\n    <br>\n\n    <!-- Separation line -->\n    {{#Source}}\n    <div id=\"source-section\">\n        <div id=\"source-header\" class=\"header header-green\" onclick=\"showNextElement(this)\">\n            Source\n        </div>\n        <div id=\"source\" class=\"content\" style=\"display:none\">\n            {{Source}}\n        </div>\n    </div>\n    <br> {{/Source}}\n\n    <!-- Separation line -->\n    {{#Extra}}\n    <div id=\"extra-section\">\n        <div id=\"extra-header\" class=\"header header-yellow\" onclick=\"showNextElement(this)\">\n            Extra\n        </div>\n        <div id=\"extra\" class=\"content\" style=\"display:none\">\n            {{Extra}}\n        </div>\n    </div>\n    <br> {{/Extra}}\n\n    <div id=\"functional-elements\">\n        <div id=\"show-one-cloze-left\"></div>\n        <div id=\"show-one-cloze-right\"></div>\n        <div id=\"no-more-cloze\"></div>\n        <div id=\"show-all-pseudo-clozes\"></div>\n        <div style=\"display:none\">\n            {{type:In-use Clozes}}\n        </div>\n    </div>\n</div>\n\n<script src=\"_jquery-3.2.1.min.js\"></script>\n<script src=\"_jquery.hotkeys.js\"></script>\n<script src=\"_jquery.visible.min.js\"></script>\n\n<script>\n    var indexOfGenuineClozeToShow = 0;\n    var genuineClozeTotalNumber = $('.genuine-cloze').length;\n    $(function () {\n        // INITIALIZE CLOZES\n        //      genuine clozes refer to those belong to current card and need to be answered, e.g. {{c2::abc}} on card2 \n        //      pseudo clozes refer to the opposite, e.g. {{c1::abc}} and {{c3::abc}} on card2 \n        $('.genuine-cloze, .pseudo-cloze').each(function (index, elem) {\n            toggleCloze(elem, 'hint')\n        });\n\n        // SHORTEN TAGS\n        //      leaving only the last part if hierarchical tags are used, i.e. tag1::tag2::tag3 -> tag3\n        // $('#tags').each(function (index, elem) {\n        //     $(elem).text($(elem).text().replace(/[^:\\s]+::/g, ''));\n        // });\n\n        // SCROLL TO FIRST CLOZE\n        if (genuineClozeTotalNumber) {\n            scrollToCloze($('.genuine-cloze').first().get(0));\n        }\n\n        $(document).keyup(function (event) {\n            if (event.which == 73 || event.which == 105){//i\n                showOneCloze();\n            }                \n            if (event.which == 188){ //,\n                showAllPseudoClozes();\n            }\n        })\n\n        // SETUP CLOZE CLICK EVENT\n        $('.genuine-cloze, .pseudo-cloze').click(function () {\n            toggleCloze(this, 'toggle');\n        });\n\n        $('#show-one-cloze-left, #show-one-cloze-right').click(function () {\n            showOneCloze();\n        });\n\n        $('#show-all-pseudo-clozes').click(function () {\n            showAllPseudoClozes();\n        })\n\n    });\n\n    function scrollToCloze(elem) {\n        $('html, body').animate({\n            scrollTop: $(elem).offset().top - 60\n        }, 500);\n    }\n\n    function showOneCloze() {\n        //alert(\"indexOfGenuineClozeToShow is \"+indexOfGenuineClozeToShow+\" while genuineClozeTotalNumber is \"+genuineClozeTotalNumber );\n        if (indexOfGenuineClozeToShow >= genuineClozeTotalNumber) {\n            $('#no-more-cloze').animate({\n                display: \"toggle\",\n            }, 500);\n        } else {\n            //alert(\"Thus there remains genuine cloze\");\n            $('.genuine-cloze[index=' + indexOfGenuineClozeToShow + ']').each(function (index, elem) {\n                //alert(\"We loop over index\"+index);\n                len = $(elem).parents('#note:hidden').length\n                //alert(\"$(elem).parents('#note:hidden').length is \"+len);\n                if (len) {\n                    //alert(\"Thus show\");\n                    $(\"#note\").show(0);\n                } else {\n                    //alert(\"Thus don't show\");\n                    if (!$(elem).is(\":visible\")) {\n                        //alert(\"Elem is not visible\");\n                        scrollToCloze(elem);\n                    } else {\n                        //alert(\"Elem is visible\");\n                        toggleCloze(elem, 'answer');\n                        if (!$(elem).is(\":visible\")) {\n                            //alert(\"Elem is not visible (second time)\");\n                            scrollToCloze(elem);\n                        } else {\n                            //alert(\"Elem is visible (second time)\");\n                        }\n                        $(elem).hide(0);\n                        $(elem).fadeIn(500);\n                        indexOfGenuineClozeToShow++;\n                    }\n                }\n            })\n        }\n        //alert(\"\");\n    }\n\n    function showAllPseudoClozes() {\n        $('.pseudo-cloze').each(function (index, elem) {\n            toggleCloze(elem, 'answer');\n        })\n    }\n\n    function toggleCloze(elem, displayOption) {\n        var answer = '',\n            hint = '';\n        var index = $(elem).attr('index');\n        if ($(elem).hasClass('genuine-cloze')) {\n            answer = $('#genuine-cloze-answer-' + index).html();\n            hint = $('#genuine-cloze-hint-' + index).html();\n        } else {\n            answer = $('#pseudo-cloze-answer-' + index).html();\n            hint = $('#pseudo-cloze-hint-' + index).html();\n        }\n        hint = '&nbsp;&nbsp;[&nbsp;&nbsp;' + hint + '&nbsp;&nbsp;]&nbsp;&nbsp;';\n\n        if (displayOption == 'answer') {\n            $(elem).attr('show-state', 'answer');\n            $(elem).html(answer);\n        } else if (displayOption == 'hint') {\n            $(elem).attr('show-state', 'hint');\n            $(elem).html(hint);\n        } else if (displayOption == 'toggle') {\n            if ($(elem).attr('show-state') == 'hint') {\n                $(elem).attr('show-state', 'answer');\n                $(elem).html(answer);\n            } else {\n                $(elem).attr('show-state', 'hint');\n                $(elem).html(hint);\n            };\n        };\n    }\n\n    function showNextElement(elem) {\n        $(elem).next().show(0);\n    };\n</script>\n", "did": None, "bafmt": "", "afmt": "{{FrontSide}}\n\n<script>\n    $(function () {\n        $('#note').show(0)\n        $('#info').show(0)\n        $('#source').show(0)\n        $('#extra').show(0)\n        $('.genuine-cloze').each(function (index, elem) {\n            toggleCloze(elem, 'answer')\n        })\n    })\n</script>", "ord": 0, "bqfmt": ""}],
- "mod": 1560146886,
- "latexPost": "\\end{document}",
- "type": 1,
- "id": 1510132306224,
- "css": "#card-body {\n    font: 17px/1.5em 'Arial', 'Helvetica', sans-serif;\n    margin-top: 60px;\n    margin-bottom: 60px;\n}\n\n.content {\n    padding-left: 0.5em;\n    border-left: 4px solid transparent;\n}\n\n.header {\n    font: bold 17px/1.5em;\n    padding-left: 0.5em;\n}\n\n.header-red {\n    border-left: 4px solid #db4437;\n    color: #db4437;\n}\n\n.header-green {\n    border-left: 4px solid #0f9d58;\n    color: #0f9d58;\n}\n\n.header-blue {\n    border-left: 4px solid #4285f4;\n    color: #4285f4;\n}\n\n.header-yellow {\n    border-left: 4px solid #f4b400;\n    color: #f4b400;\n}\n\n.genuine-cloze {\n    border-bottom: 1px solid #db4437;\n    padding-bottom: 1px;\n}\n\n.genuine-cloze[show-state=\"hint\"] {\n    border-bottom: 2px solid #db4437;\n    background-color: #ffd6d4;\n}\n\n.pseudo-cloze {\n    border-bottom: 1px solid #4285f4;\n    padding-bottom: 1px;\n}\n\n.pseudo-cloze[show-state=\"hint\"] {\n    border-bottom: 2px solid #4285f4;\n    background-color: #dce8ff;\n}\n\n#show-one-cloze-left,\n#show-one-cloze-right,\n#no-more-cloze {\n    height: 100%;\n    width: 30px;\n    position: fixed;\n    z-index: 9;\n    top: 0;\n    background-color: transparent;\n}\n\n#show-one-cloze-left {\n    left: 0;\n}\n\n#show-one-cloze-right {\n    right: 0;\n}\n\n#no-more-cloze {\n    width: 10px;\n    background-color: #db4437;\n    left: 0;\n    display: none;\n}\n\n#show-all-pseudo-clozes {\n    height: 20px;\n    width: 100%;\n    position: fixed;\n    z-index: 9;\n    top: 0;\n    left: 0;\n    background-color: transparent;\n}\n\ni {\n    padding-right: 0.5em;\n}\n\nu {\n    background-color: #dbffed;\n    border-bottom: 2px solid #0f9d58;\n    text-decoration: none;\n}\n\na {\n    color: #444444;\n    word-wrap: break-word;\n}\n\n.mobile ol,\n.mobile ul,\n.mobile li {\n    margin-left: -0.5em;\n}\n\n.mobile li {\n    margin: 0.1em, inherit;\n}\n\ntable {\n    border-collapse: collapse;\n    margin: 0.5em;\n}\n\nthead tr,\ntfoot tr {\n    border-top: 2px solid #0f9d58;\n    border-bottom: 2px solid #0f9d58;\n}\n\ntd,\nth {\n    border: 1px solid #0f9d58;\n    padding: 0.3em 0.5em;\n}\n\nhr {\n    border-top: 2px solid #aaaaaa;\n    width: 100%;\n    margin: 0;\n    padding: 0;\n}\n\npre {\n    border-left: 2px solid #0f9d58;\n    padding-left: 10px;\n}\n\ncode,\nkbd,\nvar,\nsamp,\ntt {\n    background-color: #fdf3d6;\n}",
- "latexPre": "\\documentclass[12pt]{article}\n\\special{papersize=3in,5in}\n\\usepackage[utf8]{inputenc}\n\\usepackage{amssymb,amsmath}\n\\pagestyle{empty}\n\\setlength{\\parindent}{0in}\n\\begin{document}\n"}
+    "name": "Enhanced Cloze 2.1",
+    "tags": [],
+    "did": 1511491712850,
+    "usn": -1,
+    "flds": [
+        {"name": "# Content", "media": [], "sticky": False, "rtl": False, "ord": 0, "font": "Arial", "size": 17},
+        {"name": "Note", "media": [], "sticky": False, "rtl": False, "ord": 1, "font": "Arial", "size": 17},
+        {"name": "Source", "media": [], "sticky": False, "rtl": False, "ord": 2, "font": "Arial", "size": 17},
+        {"name": "Extra", "media": [], "sticky": False, "rtl": False, "ord": 3, "font": "Arial", "size": 17},
+        {"name": "In-use Clozes", "media": [], "sticky": False, "rtl": False, "ord": 4, "font": "Arial", "size": 16},
+        {"name": "Cloze99", "media": [], "sticky": False, "rtl": False, "ord": 5, "font": "Arial", "size": 16},
+        {"name": "Cloze1", "media": [], "sticky": False, "rtl": False, "ord": 6, "font": "Arial", "size": 16},
+        {"name": "Cloze2", "media": [], "sticky": False, "rtl": False, "ord": 7, "font": "Arial", "size": 16},
+        {"name": "Cloze3", "media": [], "sticky": False, "rtl": False, "ord": 8, "font": "Arial", "size": 16},
+        {"name": "Cloze4", "media": [], "sticky": False, "rtl": False, "ord": 9, "font": "\u65b9\u6b63\u5170\u4ead\u9ed1\u7b80\u4f53", "size": 16},
+        {"name": "Cloze5", "media": [], "sticky": False, "rtl": False, "ord": 10, "font": "Arial", "size": 16},
+        {"name": "Cloze6", "media": [], "sticky": False, "rtl": False, "ord": 11, "font": "Arial", "size": 16},
+        {"name": "Cloze7", "media": [], "sticky": False, "rtl": False, "ord": 12, "font": "Arial", "size": 16},
+        {"name": "Cloze8", "media": [], "sticky": False, "rtl": False, "ord": 13, "font": "Arial", "size": 16},
+        {"name": "Cloze9", "media": [], "sticky": False, "rtl": False, "ord": 14, "font": "Arial", "size": 16},
+        {"name": "Cloze10", "media": [], "sticky": False, "rtl": False, "ord": 15, "font": "Arial", "size": 16},
+        {"name": "Cloze11", "media": [], "sticky": False, "rtl": False, "ord": 16, "font": "Arial", "size": 16},
+        {"name": "Cloze12", "media": [], "sticky": False, "rtl": False, "ord": 17, "font": "Arial", "size": 16},
+        {"name": "Cloze13", "media": [], "sticky": False, "rtl": False, "ord": 18, "font": "Arial", "size": 16},
+        {"name": "Cloze14", "media": [], "sticky": False, "rtl": False, "ord": 19, "font": "Arial", "size": 16},
+        {"name": "Cloze15", "media": [], "sticky": False, "rtl": False, "ord": 20, "font": "Arial", "size": 16},
+        {"name": "Cloze16", "media": [], "sticky": False, "rtl": False, "ord": 21, "font": "Arial", "size": 16},
+        {"name": "Cloze17", "media": [], "sticky": False, "rtl": False, "ord": 22, "font": "Arial", "size": 16},
+        {"name": "Cloze18", "media": [], "sticky": False, "rtl": False, "ord": 23, "font": "Arial", "size": 16},
+        {"name": "Cloze19", "media": [], "sticky": False, "rtl": False, "ord": 24, "font": "Arial", "size": 16},
+        {"name": "Cloze20", "media": [], "sticky": False, "rtl": False, "ord": 25, "font": "Arial", "size": 16}],
+    "sortf":0,
+    "tmpls":[
+    {
+        "name": "Cloze",
+        "qfmt": """<div id="card-body">
+    <div id="main-section" class="content">
+    <!-- Separation line -->
+    {{cloze:Cloze1}}
+    <!-- Separation line -->
+    {{cloze:Cloze2}}
+    <!-- Separation line -->
+    {{cloze:Cloze3}}
+    <!-- Separation line -->
+    {{cloze:Cloze4}}
+    <!-- Separation line -->
+    {{cloze:Cloze5}}
+    <!-- Separation line -->
+    {{cloze:Cloze6}}
+    <!-- Separation line -->
+    {{cloze:Cloze7}}
+    <!-- Separation line -->
+    {{cloze:Cloze8}}
+    <!-- Separation line -->
+    {{cloze:Cloze9}}
+    <!-- Separation line -->
+    {{cloze:Cloze10}}
+    <!-- Separation line -->
+        {{cloze:Cloze11}}
+        <!-- Separation line -->
+        {{cloze:Cloze12}}
+        <!-- Separation line -->
+        {{cloze:Cloze13}}
+        <!-- Separation line -->
+        {{cloze:Cloze14}}
+        <!-- Separation line -->
+        {{cloze:Cloze15}}
+        <!-- Separation line -->
+        {{cloze:Cloze16}}
+        <!-- Separation line -->
+        {{cloze:Cloze17}}
+        <!-- Separation line -->
+        {{cloze:Cloze18}}
+        <!-- Separation line -->
+        {{cloze:Cloze19}}
+        <!-- Separation line -->
+        {{cloze:Cloze20}}
+    </div>
+    <br>
+
+    <!-- Separation line -->
+    {{#Note}}
+    <div id="note-section">
+        <div id="note-header" class="header header-red" onclick="showNextElement(this)">
+            Note
+        </div>
+        <div id="note" class="content" style="display:none">
+            {{Note}}
+        </div>
+    </div>
+    <br> {{/Note}}
+
+    <div id="info-section">
+        <div id="info-header" class="header header-blue" onclick="showNextElement(this)">
+            Information
+        </div>
+
+        <div id="info" class="content" style="display:none">
+            <div>
+                Deck: {{Deck}}
+            </div>
+
+            <!-- Separation line -->
+            {{#Tags}}
+            <div id="tags">
+                Tags: {{Tags}}
+            </div>
+            {{/Tags}}
+        </div>
+    </div>
+    <br>
+
+    <!-- Separation line -->
+    {{#Source}}
+    <div id="source-section">
+        <div id="source-header" class="header header-green" onclick="showNextElement(this)">
+            Source
+        </div>
+        <div id="source" class="content" style="display:none">
+            {{Source}}
+        </div>
+    </div>
+    <br> {{/Source}}
+
+    <!-- Separation line -->
+    {{#Extra}}
+    <div id="extra-section">
+        <div id="extra-header" class="header header-yellow" onclick="showNextElement(this)">
+            Extra
+        </div>
+        <div id="extra" class="content" style="display:none">
+            {{Extra}}
+        </div>
+    </div>
+    <br> {{/Extra}}
+
+    <div id="functional-elements">
+        <div id="show-one-cloze-left"></div>
+        <div id="show-one-cloze-right"></div>
+        <div id="no-more-cloze"></div>
+        <div id="show-all-pseudo-clozes"></div>
+        <div style="display:none">
+            {{type:In-use Clozes}}
+        </div>
+    </div>
+</div>
+
+<script src="_jquery-3.2.1.min.js"></script>
+<script src="_jquery.hotkeys.js"></script>
+<script src="_jquery.visible.min.js"></script>
+
+<script>
+    var indexOfGenuineClozeToShow = 0;
+    var genuineClozeTotalNumber = $('.genuine-cloze').length;
+    $(function () {
+        // INITIALIZE CLOZES
+        //      genuine clozes refer to those belong to current card and need to be answered, e.g. {{c2::abc}} on card2
+        //      pseudo clozes refer to the opposite, e.g. {{c1::abc}} and {{c3::abc}} on card2
+        $('.genuine-cloze, .pseudo-cloze').each(function (index, elem) {
+            toggleCloze(elem, 'hint')
+        });
+
+        // SHORTEN TAGS
+        //      leaving only the last part if hierarchical tags are used, i.e. tag1::tag2::tag3 -> tag3
+        // $('#tags').each(function (index, elem) {
+        //     $(elem).text($(elem).text().replace(/[^:\\s]+::/g, ''));
+        // });
+
+        // SCROLL TO FIRST CLOZE
+        if (genuineClozeTotalNumber) {
+            scrollToCloze($('.genuine-cloze').first().get(0));
+        }
+
+        $(document).keyup(function (event) {
+            if (event.which == 73 || event.which == 105){//i
+                showOneCloze();
+            }
+            if (event.which == 188){ //,
+                showAllPseudoClozes();
+            }
+        })
+
+        // SETUP CLOZE CLICK EVENT
+        $('.genuine-cloze, .pseudo-cloze').click(function () {
+            toggleCloze(this, 'toggle');
+        });
+
+        $('#show-one-cloze-left, #show-one-cloze-right').click(function () {
+            showOneCloze();
+        });
+
+        $('#show-all-pseudo-clozes').click(function () {
+            showAllPseudoClozes();
+        })
+
+    });
+
+    function scrollToCloze(elem) {
+        $('html, body').animate({
+            scrollTop: $(elem).offset().top - 60
+        }, 500);
+    }
+
+    function showOneCloze() {
+        //alert("indexOfGenuineClozeToShow is "+indexOfGenuineClozeToShow+" while genuineClozeTotalNumber is "+genuineClozeTotalNumber );
+        if (indexOfGenuineClozeToShow >= genuineClozeTotalNumber) {
+            $('#no-more-cloze').animate({
+                display: "toggle",
+            }, 500);
+        } else {
+            //alert("Thus there remains genuine cloze");
+            $('.genuine-cloze[index=' + indexOfGenuineClozeToShow + ']').each(function (index, elem) {
+                //alert("We loop over index"+index);
+                len = $(elem).parents('#note:hidden').length
+                //alert("$(elem).parents('#note:hidden').length is "+len);
+                if (len) {
+                    //alert("Thus show");
+                    $("#note").show(0);
+                } else {
+                    //alert("Thus don't show");
+                    if (!$(elem).is(":visible")) {
+                        //alert("Elem is not visible");
+                        scrollToCloze(elem);
+                    } else {
+                        //alert("Elem is visible");
+                        toggleCloze(elem, 'answer');
+                        if (!$(elem).is(":visible")) {
+                            //alert("Elem is not visible (second time)");
+                            scrollToCloze(elem);
+                        } else {
+                            //alert("Elem is visible (second time)");
+                        }
+                        $(elem).hide(0);
+                        $(elem).fadeIn(500);
+                        indexOfGenuineClozeToShow++;
+                    }
+                }
+            })
+        }
+        //alert("");
+    }
+
+    function showAllPseudoClozes() {
+        $('.pseudo-cloze').each(function (index, elem) {
+            toggleCloze(elem, 'answer');
+        })
+    }
+
+    function toggleCloze(elem, displayOption) {
+        var answer = '',
+            hint = '';
+        var index = $(elem).attr('index');
+        if ($(elem).hasClass('genuine-cloze')) {
+            answer = $('#genuine-cloze-answer-' + index).html();
+            hint = $('#genuine-cloze-hint-' + index).html();
+        } else {
+            answer = $('#pseudo-cloze-answer-' + index).html();
+            hint = $('#pseudo-cloze-hint-' + index).html();
+        }
+        hint = '&nbsp;&nbsp;[&nbsp;&nbsp;' + hint + '&nbsp;&nbsp;]&nbsp;&nbsp;';
+
+        if (displayOption == 'answer') {
+            $(elem).attr('show-state', 'answer');
+            $(elem).html(answer);
+        } else if (displayOption == 'hint') {
+            $(elem).attr('show-state', 'hint');
+            $(elem).html(hint);
+        } else if (displayOption == 'toggle') {
+            if ($(elem).attr('show-state') == 'hint') {
+                $(elem).attr('show-state', 'answer');
+                $(elem).html(answer);
+            } else {
+                $(elem).attr('show-state', 'hint');
+                $(elem).html(hint);
+            };
+        };
+    }
+
+    function showNextElement(elem) {
+        $(elem).next().show(0);
+    };
+</script>
+""",
+        "did": None,
+        "bafmt": "",
+        "afmt": """
+{{FrontSide}}
+
+<script>
+    $(function () {
+        $('#note').show(0)
+        $('#info').show(0)
+        $('#source').show(0)
+        $('#extra').show(0)
+        $('.genuine-cloze').each(function (index, elem) {
+            toggleCloze(elem, 'answer')
+        })
+    })
+</script>""",
+        "ord": 0,
+        "bqfmt": ""}],
+    "mod": 1560146886,
+    "latexPost": "\\end{document}",
+    "type": 1,
+    "id": 1510132306224,
+    "css": """#card-body {
+    font: 17px/1.5em 'Arial', 'Helvetica', sans-serif;
+    margin-top: 60px;
+    margin-bottom: 60px;
+}
+
+.content {
+    padding-left: 0.5em;
+    border-left: 4px solid transparent;
+}
+
+.header {
+    font: bold 17px/1.5em;
+    padding-left: 0.5em;
+}
+
+.header-red {
+    border-left: 4px solid #db4437;
+    color: #db4437;
+}
+
+.header-green {
+    border-left: 4px solid #0f9d58;
+    color: #0f9d58;
+}
+
+.header-blue {
+    border-left: 4px solid #4285f4;
+    color: #4285f4;
+}
+
+.header-yellow {
+    border-left: 4px solid #f4b400;
+    color: #f4b400;
+}
+
+.genuine-cloze {
+    border-bottom: 1px solid #db4437;
+    padding-bottom: 1px;
+}
+
+.genuine-cloze[show-state="hint"] {
+    border-bottom: 2px solid #db4437;
+    background-color: #ffd6d4;
+}
+
+.pseudo-cloze {
+    border-bottom: 1px solid #4285f4;
+    padding-bottom: 1px;
+}
+
+.pseudo-cloze[show-state="hint"] {
+    border-bottom: 2px solid #4285f4;
+    background-color: #dce8ff;
+}
+
+#show-one-cloze-left,
+#show-one-cloze-right,
+#no-more-cloze {
+    height: 100%;
+    width: 30px;
+    position: fixed;
+    z-index: 9;
+    top: 0;
+    background-color: transparent;
+}
+
+#show-one-cloze-left {
+    left: 0;
+}
+
+#show-one-cloze-right {
+    right: 0;
+}
+
+#no-more-cloze {
+    width: 10px;
+    background-color: #db4437;
+    left: 0;
+    display: none;
+}
+
+#show-all-pseudo-clozes {
+    height: 20px;
+    width: 100%;
+    position: fixed;
+    z-index: 9;
+    top: 0;
+    left: 0;
+    background-color: transparent;
+}
+
+i {
+    padding-right: 0.5em;
+}
+
+u {
+    background-color: #dbffed;
+    border-bottom: 2px solid #0f9d58;
+    text-decoration: none;
+}
+
+a {
+    color: #444444;
+    word-wrap: break-word;
+}
+
+.mobile ol,
+.mobile ul,
+.mobile li {
+    margin-left: -0.5em;
+}
+
+.mobile li {
+    margin: 0.1em, inherit;
+}
+
+table {
+    border-collapse: collapse;
+    margin: 0.5em;
+}
+
+thead tr,
+tfoot tr {
+    border-top: 2px solid #0f9d58;
+    border-bottom: 2px solid #0f9d58;
+}
+
+td,
+th {
+    border: 1px solid #0f9d58;
+    padding: 0.3em 0.5em;
+}
+
+hr {
+    border-top: 2px solid #aaaaaa;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+pre {
+    border-left: 2px solid #0f9d58;
+    padding-left: 10px;
+}
+
+code,
+kbd,
+var,
+samp,
+tt {
+    background-color: #fdf3d6;
+}""",
+ "latexPre": """\\documentclass[12pt]{article}
+\\special{papersize=3in,5in}
+\\usepackage[utf8]{inputenc}
+\\usepackage{amssymb,amsmath}
+\\pagestyle{empty}
+\\setlength{\\parindent}{0in}
+\\begin{document}
+"""}
