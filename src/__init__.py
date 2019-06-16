@@ -204,8 +204,9 @@ def on_save_now(self, *args, **kwargs):
         return 
     self.web.eval("saveField('key');")
     note = self.note
+    tooltip('save now')
     if not note or not check_model(note.model()):
-        return _oldSaveNow(self, callback, keepFocus=False)
+        return _oldSaveNow(self, *args, **kwargs)
     self.saveTags()
 
     generate_enhanced_cloze(note)
@@ -216,12 +217,6 @@ def on_save_now(self, *args, **kwargs):
     ret = _oldSaveNow(self, *args, **kwargs)
     return ret
 
-Editor.saveNow = on_save_now
-
-def onCloze(self):
-    _oldSaveNow(self, self._onCloze, keepFocus = True)
-Editor.onCloze = onCloze
-Editor._links["cloze"] = onCloze
 
 # AddCards.addCards = wrap(AddCards.addCards, on_add_cards, "around")
 
@@ -229,13 +224,13 @@ Editor._links["cloze"] = onCloze
 
 
 
-
+Editor.saveNow = on_save_now
 
 addHook("browser.setupMenus", setup_menu)
 
 def addModel():
     if exists_model():
-        #print("Model exists")
+        print("Model exists")
         return
     mw.col.models.add(enhancedModel)
     jsToCopy = ["_Autolinker.min.js", "_jquery-3.2.1.min.js", "_jquery.hotkeys.js", "_jquery.visible.min.js"]
@@ -243,5 +238,5 @@ def addModel():
         file = os.path.join(mw.addonManager.addonsFolder(__name__), file)
         print(f"File is {file}")
         copy(file,mw.col.media.dir())
-
+    
 addHook("profileLoaded", addModel)
