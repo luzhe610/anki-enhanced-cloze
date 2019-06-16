@@ -199,14 +199,13 @@ def setup_menu(self):
 
     
 _oldSaveNow = Editor.saveNow 
-def on_save_now(self, *args, **kwargs):
+def on_save_now(self, callback, keepFocus=False):
     if self.web is None: # This occur if the window is already closing, but closing has not yet ended.
         return 
     self.web.eval("saveField('key');")
     note = self.note
-    tooltip('save now')
     if not note or not check_model(note.model()):
-        return _oldSaveNow(self, *args, **kwargs)
+        return _oldSaveNow(self, callback, keepFocus=False)
     self.saveTags()
 
     generate_enhanced_cloze(note)
@@ -217,6 +216,12 @@ def on_save_now(self, *args, **kwargs):
     ret = _oldSaveNow(self, *args, **kwargs)
     return ret
 
+Editor.saveNow = on_save_now
+
+def onCloze(self):
+    _oldSaveNow(self, self._onCloze, keepFocus = True)
+Editor.onCloze = onCloze
+Editor._links["cloze"] = onCloze
 
 # AddCards.addCards = wrap(AddCards.addCards, on_add_cards, "around")
 
@@ -224,13 +229,13 @@ def on_save_now(self, *args, **kwargs):
 
 
 
-Editor.saveNow = on_save_now
+
 
 addHook("browser.setupMenus", setup_menu)
 
 def addModel():
     if exists_model():
-        print("Model exists")
+        #print("Model exists")
         return
     mw.col.models.add(enhancedModel)
     jsToCopy = ["_Autolinker.min.js", "_jquery-3.2.1.min.js", "_jquery.hotkeys.js", "_jquery.visible.min.js"]
@@ -238,5 +243,5 @@ def addModel():
         file = os.path.join(mw.addonManager.addonsFolder(__name__), file)
         print(f"File is {file}")
         copy(file,mw.col.media.dir())
-    
+
 addHook("profileLoaded", addModel)
