@@ -197,15 +197,15 @@ def setup_menu(self):
         lambda _, b=browser: update_all_enhanced_clozes_in_browser(b))
 
 
-    
-_oldSaveNow = Editor.saveNow 
-def on_save_now(self, callback, keepFocus=False):
+
+_oldSaveNow = Editor.saveNow
+def on_save_now(self, *args, **kwargs):
     if self.web is None: # This occur if the window is already closing, but closing has not yet ended.
-        return 
+        return
     self.web.eval("saveField('key');")
     note = self.note
     if not note or not check_model(note.model()):
-        return _oldSaveNow(self, callback, keepFocus=False)
+        return _oldSaveNow(self, *args, **kwargs)
     self.saveTags()
 
     generate_enhanced_cloze(note)
