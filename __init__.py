@@ -203,12 +203,11 @@ def on_save_now(self, *args, **kwargs):
     if self.web is None: # This occur if the window is already closing, but closing has not yet ended.
         return
     self.web.eval("saveField('key');")
-    note = self.note
-    if not note or not check_model(note.model()):
+    if not self.note or not check_model(self.note.model()):
         return _oldSaveNow(self, *args, **kwargs)
     self.saveTags()
 
-    generate_enhanced_cloze(note)
+    generate_enhanced_cloze(self.note)
 
     self.loadNote()
     self.web.setFocus()
