@@ -202,18 +202,17 @@ _oldSaveNow = Editor.saveNow
 def on_save_now(self, *args, **kwargs):
     if self.web is None: # This occur if the window is already closing, but closing has not yet ended.
         return
-    self.web.eval("saveField('key');")
     if not self.note or not check_model(self.note.model()):
         return _oldSaveNow(self, *args, **kwargs)
     self.saveTags()
+    def remaining(res):#arg given because it is required for callback
+        generate_enhanced_cloze(self.note)
 
-    generate_enhanced_cloze(self.note)
-
-    self.loadNote()
-    self.web.setFocus()
-    self.web.eval(f"focusField({self.currentField});")
-    ret = _oldSaveNow(self, *args, **kwargs)
-    return ret
+        self.loadNote()
+        self.web.setFocus()
+        self.web.eval(f"focusField({self.currentField});")
+        ret = _oldSaveNow(self, *args, **kwargs)
+    return self.web.evalWithCallback("saveField('key');", remaining)
 
 Editor.saveNow = on_save_now
 
