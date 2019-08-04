@@ -1,7 +1,10 @@
 # -*- coding: utf-8 -*-
 
 import re
+import os
+from shutil import copy
 
+from anki.hooks import addHook
 from aqt import mw
 from aqt.utils import showInfo
 from aqt.addcards import AddCards
@@ -11,6 +14,7 @@ from aqt.utils import tooltip
 from anki.hooks import addHook, wrap
 from aqt.editor import Editor
 from aqt.qt import *
+from .model import enhancedModel
 
 # global variables
 genuine_cloze_answer_array = []
@@ -105,8 +109,15 @@ def generate_enhanced_cloze(note):
 
 
 def check_model(model):
-    return re.search("Enhanced Cloze", model["name"])
+    """Whether this model is Enhanced cloze version 2.1"""
+    return re.search("Enhanced Cloze 2.1", model["name"])
 
+def exists_model():
+    "Whether the collection contains model Enhanced Cloze 2.1"
+    for model in mw.col.models.all():
+        if check_model(model):
+            return True
+    return False
 
 def process_cloze(matchObj):
 
@@ -149,25 +160,6 @@ def process_cloze(matchObj):
             '_cloze-id_', cloze_id).replace('_content_', cloze_string)
         return new_html
 
-
-def on_add_cards(self, _old):
-    note = self.editor.note
-    if not note or not check_model(note.model()):
-        return _old(self)
-    generate_enhanced_cloze(note)
-    ret = _old(self)
-    return ret
-
-
-def on_edit_current_save(self, _old):
-    note = self.editor.note
-    if not note or not check_model(note.model()):
-        return _old(self)
-    generate_enhanced_cloze(note)
-    ret = _old(self)
-    return ret
-
-
 def update_all_enhanced_clozes_in_browser(self, evt=None):
     browser = self
     mw = browser.mw
@@ -205,14 +197,49 @@ def setup_menu(self):
         lambda _, b=browser: update_all_enhanced_clozes_in_browser(b))
 
 
-def on_save_now(self, callback=None):
-    update_all_enhanced_cloze(self)
+
+_oldSaveNow = Editor.saveNow
+def on_save_now(self, *args, **kwargs):
+    if self.web is None: # This occur if the window is already closing, but closing has not yet ended.
+        return
+    if not self.note or not check_model(self.note.model()):
+        return _oldSaveNow(self, *args, **kwargs)
+    self.saveTags()
+    def remaining(res):#arg given because it is required for callback
+        generate_enhanced_cloze(self.note)
+
+        self.loadNote()
+        self.web.setFocus()
+        self.web.eval(f"focusField({self.currentField});")
+        ret = _oldSaveNow(self, *args, **kwargs)
+    return self.web.evalWithCallback("saveField('key');", remaining)
+
+Editor.saveNow = on_save_now
+
+def onCloze(self):
+    _oldSaveNow(self, self._onCloze, keepFocus = True)
+Editor.onCloze = onCloze
+Editor._links["cloze"] = onCloze
+
+# AddCards.addCards = wrap(AddCards.addCards, on_add_cards, "around")
+
+# EditCurrent.onSave = wrap(EditCurrent.onSave, on_edit_current_save, "around")
 
 
-AddCards.addCards = wrap(AddCards.addCards, on_add_cards, "around")
 
-EditCurrent.onSave = wrap(EditCurrent.onSave, on_edit_current_save, "around")
 
-Editor.saveNow = wrap(Editor.saveNow, on_save_now, "before")
 
 addHook("browser.setupMenus", setup_menu)
+
+def addModel():
+    if exists_model():
+        #print("Model exists")
+        return
+    mw.col.models.add(enhancedModel)
+    jsToCopy = ["_Autolinker.min.js", "_jquery-3.2.1.min.js", "_jquery.hotkeys.js", "_jquery.visible.min.js"]
+    for file in jsToCopy:
+        file = os.path.join(mw.addonManager.addonsFolder(__name__), file)
+        print(f"File is {file}")
+        copy(file,mw.col.media.dir())
+
+addHook("profileLoaded", addModel)
