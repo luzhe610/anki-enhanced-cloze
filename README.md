@@ -26,4 +26,3 @@ License     | GNU AGPL, version 3 or later; http://www.gnu.org/licenses/agpl.htm
 Source in   | https://github.com/Arthur-Milchior/anki-enhanced-cloze
 Addon number| [2062736101](https://ankiweb.net/shared/info/2062736101)
 Support luzhe610| https://www.paypal.me/LuZhe610
-Support Arthur| [![Ko-fi](https://ko-fi.com/img/Kofi_Logo_Blue.svg)](Ko-fi.com/arthurmilchior) or [![Patreon](http://www.milchior.fr/patreon.png)](https://www.patreon.com/bePatron?u=146206)
