@@ -1,0 +1,2 @@
+rm ec.zip
+zip ec.zip *.py *js README.md zipping *html *css
